@@ -126,9 +126,8 @@ class HBNBCommand(cmd.Cmd):
         if len(line) > 1:
             for i in range(1, len(line)):
                 tmp = line[i].replace('"', '').split('=')
-                for j in range(len(tmp)):
-                    if '_' in tmp[j]:
-                        tmp[j] = tmp[j].replace("_", " ")
+                if '_' in tmp[1]:
+                    tmp[1] = tmp[1].replace("_", " ")
                 setattr(new_instance, tmp[0], tmp[1])
         storage.save()
         print(new_instance.id)
