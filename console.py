@@ -131,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
             if len(key_value) == 2:
                 key, raw_value = key_value
                 # process the value based on its type
-                if raw_value.starswith('"') and raw_value.endswith('"'):
+                if raw_value.startswith('"') and raw_value.endswith('"'):
                     # string value
                     value = raw_value[1:-1].replace('_', ' ').replace('\\"', '"')
                 elif '.' in raw_value:
