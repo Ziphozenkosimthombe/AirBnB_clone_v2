@@ -1,15 +1,18 @@
 #!/usr/bin/python3
-""" State Module for HBNB project """
-from models.base_model import BaseModel, Base
+"""This is the state class"""
 from os import getenv
 from sqlalchemy import String, DateTime, Column, ForeignKey
 from sqlalchemy.orm import relationship
 import models
+from models.base_model import BaseModel, Base
 from models.city import City
 
 
 class State(BaseModel, Base):
-    """ State class """
+    """This is the class for State
+    Attributes:
+        name: input name
+    """
     __tablename__ = 'states'
     name = Column(String(128), nullable=False)
 
