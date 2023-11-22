@@ -17,7 +17,7 @@ class BaseModel:
 
     id = Column(String(60), unique=True, nullable=False,
                 primary_key=True)
-    created_at =  Column(DateTime, nullable=False, default=datetime.utcnow())
+    created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
 
     """A base class for all hbnb models"""
@@ -65,7 +65,7 @@ class BaseModel:
         return dictionary
 
     def delete(self):
-         """Delete the current instance from the storage
-         by calling the method delete"""
-         from models import storage
-         storage.delete(self)
+        """Delete the current instance from the storage
+        by calling the method delete"""
+        from models import storage
+        storage.delete(self)

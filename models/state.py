@@ -17,8 +17,8 @@ class State(BaseModel, Base):
         cities = relationship('City', backref='state',
                               cascade='all, delete-orphan')
     else:
-         @property
-         def cities(self):
-             """Getter attribute in case of file storage"""
-             return [city for city in models.storage.all(City).values()
+        @property
+        def cities(self):
+            """Getter attribute in case of file storage"""
+            return [city for city in models.storage.all(City).values()
                     if city.state_id == self.id]
