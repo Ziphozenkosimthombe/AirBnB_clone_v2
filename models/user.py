@@ -1,21 +1,21 @@
 #!/usr/bin/python3
-"""This is the user class"""
-from models.base_model import BaseModel, Base
-from sqlalchemy import String, DateTime, Column, ForeignKey
-from sqlalchemy.orm import relationship
+'''User Module'''
+from models.base_model import BaseModel
 
 
-class User(BaseModel, Base):
-    """This is the class for user
-    Attributes:
-        email: email address
-        password: password for you login
-        first_name: first name
-        last_name: last name
-    """
-    __tablename__ = 'users'
+class User(BaseModel):
+    """class User inherits from BaseModel"""
 
-    email = Column(String(128), nullable=False)
-    password = Column(String(128), nullable=False)
-    first_name = Column(String(128), nullable=True)
-    last_name = Column(String(128), nullable=True)
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""
+
+    def __inti__(self, *args, **kwargs):
+        """creating the instance constructor.
+        Arg:
+            id: the unique id.
+            created_at: the date for created at.
+            update_at: the date for updated at.
+        """
+        super().__init__(*args, **kwargs)

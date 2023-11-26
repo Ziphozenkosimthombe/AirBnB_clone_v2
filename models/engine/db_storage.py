@@ -37,7 +37,6 @@ class DBStorage:
             for obj in query:
                 key = "{}.{}".format(cls.__class__.__name__, cls.id)
                 dict[key] = obj
-                print('key:',key)
         else:
             classes = [City, State]
             for cls in classes:
@@ -47,9 +46,6 @@ class DBStorage:
                         cls.__class__.__name__, cls.id
                     )
                     dict[key] = obj
-                    print('key:',key)
-
-        print('here is dict:',dict)
         return dict
 
     def new(self, obj):
