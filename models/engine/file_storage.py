@@ -13,6 +13,14 @@ class FileStorage:
         list_objects = {}
         if cls:
             for key in FileStorage.__objects:
+                class_id = key.split(".")[0]
+                if class_id == cls.__name__:
+                    list_objects[key] = FileStorage.__objects[key]
+            return list_objects
+        else:
+            list_objects = {}
+        if cls:
+            for key in FileStorage.__objects:
                 class_id = key.split(".")
                 if class_id[0] == cls.__name__:
                     list_objects[key] = FileStorage.__objects[key]
