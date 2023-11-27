@@ -122,16 +122,18 @@ class HBNBCommand(cmd.Cmd):
         if line[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        new_instance = HBNBCommand.classes[line[0]]()
+        # new_instance = HBNBCommand.classes[line[0]]()
+        new_instance = eval(line[0] + '()')
+        print(dir(new_instance))
         if len(line) > 1:
             for i in range(1, len(line)):
                 tmp = line[i].replace('"', '').split('=')
                 if '_' in tmp[1]:
                     tmp[1] = tmp[1].replace("_", " ")
                 setattr(new_instance, tmp[0], tmp[1])
-        storage.save()
+        # storage.save()
         print(new_instance.id)
-        storage.save()
+        new_instance.save()
 
     def help_create(self):
         """ Help information for the create method """
@@ -209,17 +211,16 @@ class HBNBCommand(cmd.Cmd):
         print_list = []
 
         if args:
-            args = args.split(' ')[0]  # remove possible trailing args
+            args = args.split(' ')[0] # assign Class name to args
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage._FileStorage__objects.items():
-                if k.split('.')[0] == args:
+            for k, v in storage.all().items():
+                if k.split('.')[0] == args: #verify class name
                     print_list.append(str(v))
         else:
-            for k, v in storage._FileStorage__objects.items():
-                print_list.append(str(v))
-
+            for k, v in storage.all().items():
+                print_list.append(str(v))            
         print(print_list)
 
     def help_all(self):
