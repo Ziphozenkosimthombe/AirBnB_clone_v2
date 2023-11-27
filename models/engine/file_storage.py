@@ -13,10 +13,9 @@ class FileStorage:
         if cls is not None:
             dict = {}
             for key, val in self.__objects.items():
-                new_key = key.split('.')[0]
-                if new_key == cls.__class__.__name__:
+                if cls == val.__class__ or cls == val.__class__.__name__:
                     dict[key] = val
-            self.__objects = dict
+            return dict
         return FileStorage.__objects
 
     def new(self, obj):
@@ -56,9 +55,9 @@ class FileStorage:
         except FileNotFoundError:
             pass
 
-    def delete(self, obj=None)-> None:
+    def delete(self, obj=None) -> None:
         """delete obj from __objects if it is in __objects"""
-        if obj is None:
+        if obj is not None:
             key = '{}.{}'.format(obj.__class__.__name__, obj.id)
             if key in self.__objects:
-                del FileStorage.__objects[key]
+                del self.__objects[key]
