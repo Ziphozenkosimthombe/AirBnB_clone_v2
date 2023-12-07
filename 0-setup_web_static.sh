@@ -25,7 +25,7 @@ echo '
 ' | sudo tee "/data/web_static/releases/test/index.html"
 
 # Define paths
-# link_path="/data/web_static/current"
+link_path="/data/web_static/current"
 # target_path="/data/web_static/releases/test"
 
 # Check if the symbolic link already exists
