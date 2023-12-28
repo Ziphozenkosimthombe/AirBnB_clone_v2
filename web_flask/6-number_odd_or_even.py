@@ -50,4 +50,4 @@ def number_odd_or_even(n):
 
 if __name__ == '__main__':
     """start the server"""
-    app.run(host='0.0.0.0', port=500
+    app.run(host='0.0.0.0', port=5000)
